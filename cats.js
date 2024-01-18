@@ -31,17 +31,53 @@ const getCatImages = async () => {
         catImagesContainer.innerHTML = ''; // Czyszczenie kontenera przed dodaniem nowego obrazu
         catImagesContainer.appendChild(catImageContainer);
 
-        // Dodanie przycisku do wyświetlania następnego kotka
+        // Dodanie przycisku do pobierania obrazu
+        const downloadButton = document.createElement('button');
+        downloadButton.innerText = 'Pobierz obraz';
+        downloadButton.className = 'download-cat-button';
+        downloadButton.addEventListener('click', () => downloadImage(imageUrl));
+
+        // Dodanie przycisku "Następny Kotek"
         const nextCatButton = document.createElement('button');
         nextCatButton.innerText = 'Następny Kotek';
-        nextCatButton.className = 'next-cat-button'; // Dodanie klasy do przycisku
+        nextCatButton.className = 'next-cat-button';
         nextCatButton.addEventListener('click', getCatImages);
 
-        // Dodanie przycisku pod obrazem
+        // Dodanie przycisków pod obrazem
+        catImagesContainer.appendChild(downloadButton);
         catImagesContainer.appendChild(nextCatButton);
 
     } catch (error) {
         console.error('Błąd podczas pobierania obrazu kota:', error);
+    }
+};
+
+// Funkcja do pobierania obrazu
+const downloadImage = async (imageUrl) => {
+    try {
+        const response = await fetch(imageUrl);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
+        }
+
+        const imageBlob = await response.blob();
+
+        // Utwórz link do pobrania
+        const downloadLink = document.createElement('a');
+        downloadLink.href = URL.createObjectURL(imageBlob);
+        downloadLink.download = 'cat_image.jpg';
+
+        // Dodaj link do dokumentu
+        document.body.appendChild(downloadLink);
+
+        // Kliknij na link
+        downloadLink.click();
+
+        // Usuń link z dokumentu
+        document.body.removeChild(downloadLink);
+    } catch (error) {
+        console.error('Błąd podczas pobierania obrazu:', error);
     }
 };
 
@@ -56,8 +92,3 @@ if (logoutButton) {
         window.location.href = '/';
     });
 }
-
-
-
-
-

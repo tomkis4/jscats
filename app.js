@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -34,20 +34,20 @@ connection.connect((err) => {
     }
 });
 
-// Dodaj trasę dla pliku CSS
+// trasa dla pliku CSS
 app.use(express.static(path.join(__dirname, '/')));
 
-// Dodaj trasę dla strony głównej
+// trasa dla strony głównej
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 });
 
-// Dodaj trasę dla strony logowania
+// trasa dla strony logowania
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '/login.html'));
 });
 
-// Dodaj trasę dla strony rejestracji
+// trasa dla strony rejestracji
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, '/register.html'));
 });
@@ -113,12 +113,12 @@ const checkLoggedIn = (req, res, next) => {
     }
 };
 
-// Dodaj trasę dla strony /cats
+// trasa dla strony /cats
 app.get('/cats', checkLoggedIn, (req, res) => {
     res.sendFile(path.join(__dirname, '/cats.html'));
 });
 
-// Dodaj trasę dla skryptu cats.js
+// trasa dla skryptu cats.js
 app.get('/cats.js', (req, res) => {
     res.sendFile(path.join(__dirname, '/cats.js'));
 });
