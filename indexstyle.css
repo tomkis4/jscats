@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://wallpapers.com/images/featured/cat-g9rdx9uk2425fip2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    margin: 200px auto; /* Zwiększono margines dla lepszego wycentrowania */
+    padding: 60px; /* Zwiększono padding dla lepszego wyglądu */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 72px; /* Zwiększono rozmiar napisu */
+    color: #ffd700;
+}
+
+p {
+    font-size: 36px; /* Zwiększono rozmiar tekstu */
+    color: #fff;
+}
+
+a {
+    display: inline-block;
+    margin-top: 40px; /* Zwiększono margines odstępu od tekstu */
+    padding: 30px 40px; /* Zwiększono padding przycisku */
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: #45a049;
+}
+
+
+
